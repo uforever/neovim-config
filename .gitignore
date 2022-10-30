@@ -1,26 +1,45 @@
-# General
-.DS_Store
+*.a
+*.app
+*.def
+*.dll
+*.dylib
+*.elf
+*.exe
+*.exp
+*.gch
+*.hex
+*.i*86
+*.ko
+*.la
+*.lib
+*.lo
+*.o
+*.obj
+*.os
+*.out
+*.pch
+*.so
+*.so.*
+*.src.rock
+*.tar.gz
+*.x86_64
+*.zip
+.AppleDB
+.AppleDesktop
 .AppleDouble
-.LSOverride
-
-# Icon must end with two \r
-Icon
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
+.DS_Store
 .DocumentRevisions-V100
-.fseventsd
+.LSOverride
 .Spotlight-V100
 .TemporaryItems
 .Trashes
 .VolumeIcon.icns
+._*
+.apdisk
 .com.apple.timemachine.donotpresent
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
+.fseventsd
+Icon
 Network Trash Folder
 Temporary Items
-.apdisk
+luac.out
+plugin
