@@ -15,6 +15,9 @@ return require('packer').startup({
     function(use)
         use("wbthomason/packer.nvim") -- 插件管理
         use "nvim-lua/plenary.nvim" -- 插件依赖
+        use("folke/tokyonight.nvim") -- 颜色主题TokyoNight
+        -- use("navarasu/onedark.nvim") -- 颜色主题OneDark
+        -- use("shaunsingh/nord.nvim") -- 颜色主题Nord
 
         -- 自动安装packer并同步插件
         if packer_bootstrap then
