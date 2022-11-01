@@ -14,7 +14,8 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup({
 	function(use)
 		use("wbthomason/packer.nvim") -- 插件管理
-		use "nvim-lua/plenary.nvim" -- 插件依赖
+		use("nvim-lua/plenary.nvim") -- 插件依赖
+		use("nvim-tree/nvim-web-devicons") -- 图标
 		use("folke/tokyonight.nvim") -- 颜色主题TokyoNight
 		-- use("navarasu/onedark.nvim") -- 颜色主题OneDark
 		-- use("shaunsingh/nord.nvim") -- 颜色主题Nord
@@ -27,6 +28,14 @@ return require('packer').startup({
 		use("neovim/nvim-lspconfig") -- LSP客户端配置
 		use("williamboman/mason.nvim") -- 语言服务管理
 		use("williamboman/mason-lspconfig.nvim") -- 语言服务自动安装
+        use("onsails/lspkind-nvim") -- LSP美化
+        use("hrsh7th/nvim-cmp") -- 自动补全
+        use("hrsh7th/vim-vsnip") -- 代码片段
+        use("hrsh7th/cmp-vsnip") -- 代码片段
+        use("hrsh7th/cmp-buffer") -- 缓冲区
+        use("hrsh7th/cmp-nvim-lsp") -- LSP
+        use("hrsh7th/cmp-path") -- 文件路径
+        use("hrsh7th/cmp-cmdline") -- 命令行
 
 		-- 自动安装packer并同步插件
 		if packer_bootstrap then

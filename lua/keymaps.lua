@@ -1,11 +1,11 @@
 local keymap = vim.api.nvim_set_keymap
 local buf_keymap = vim.api.nvim_buf_set_keymap
 local opts = {
-	noremap = true,
-	silent = true
+    noremap = true,
+    silent = true
 }
 local term_opts = {
-	silent = true
+    silent = true
 }
 
 keymap("", "<Space>", "<Nop>", opts)
@@ -49,36 +49,67 @@ keymap("v", "K", ":move '<-2<CR>gv-gv", opts) -- 选中区域连续上移
 local M = {}
 
 M.syntax_parser = {
-	incremental_selection = {
-		init_selection = "<CR>", -- 初始化选择
-		node_incremental = "<CR>", -- 扩大节点
-		node_decremental = "<BS>", -- 缩小节点
-		scope_incremental = "<TAB>" -- 扩大范围
-	}, -- 增量选择模块
-	refactor = {
-		smart_rename = {
-			smart_rename = nil -- 智能重命名
-		}, -- 智能重命名
-		navigation = {
-			goto_definition = nil, -- 跳转到定义
-			list_definitions = nil, -- 列出定义
-			list_definitions_toc = nil, -- 列出定义目录
-			goto_next_usage = "<leader>gn", -- 跳转到下一个使用
-			goto_previous_usage = "<leader>gp" -- 跳转到上一个使用
-		} -- 重名导航
-	} -- 重构模块
+    incremental_selection = {
+        init_selection = "<CR>", -- 初始化选择
+        node_incremental = "<CR>", -- 扩大节点
+        node_decremental = "<BS>", -- 缩小节点
+        scope_incremental = "<TAB>" -- 扩大范围
+    }, -- 增量选择模块
+    refactor = {
+        smart_rename = {
+            smart_rename = nil -- 智能重命名
+        }, -- 智能重命名
+        navigation = {
+            goto_definition = nil, -- 跳转到定义
+            list_definitions = nil, -- 列出定义
+            list_definitions_toc = nil, -- 列出定义目录
+            goto_next_usage = "<leader>gn", -- 跳转到下一个使用
+            goto_previous_usage = "<leader>gp" -- 跳转到上一个使用
+        } -- 重名导航
+    } -- 重构模块
 } -- 语法分析
 
 M.language_server = function(bufnr)
-	buf_keymap(bufnr, "n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts) -- 重命名
-	buf_keymap(bufnr, "n", "<Leader>gi", "<cmd>lua vim.lsp.buf.hover()<CR>", opts) -- 显示信息
-	buf_keymap(bufnr, "n", "<Leader>gu", "<cmd>lua vim.lsp.buf.references()<CR>", opts) -- 显示引用
-	buf_keymap(bufnr, "n", "<Leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts) -- 跳转到定义
-	buf_keymap(bufnr, "n", "<leader>ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts) -- 代码动作
-	buf_keymap(bufnr, "n", "<Leader>fm", "<cmd>lua vim.lsp.buf.format()<CR>", opts) -- 格式化
-	buf_keymap(bufnr, "n", "<Leader>ep", "<cmd>lua vim.diagnostic.open_float()<CR>", opts) -- 显示错误
-	buf_keymap(bufnr, "n", "<Leader>ej", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts) -- 下一个错误
-	buf_keymap(bufnr, "n", "<Leader>ek", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts) -- 上一个错误
+    buf_keymap(bufnr, "n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts) -- 重命名
+    buf_keymap(bufnr, "n", "<Leader>gi", "<cmd>lua vim.lsp.buf.hover()<CR>", opts) -- 显示信息
+    buf_keymap(bufnr, "n", "<Leader>gu", "<cmd>lua vim.lsp.buf.references()<CR>", opts) -- 显示引用
+    buf_keymap(bufnr, "n", "<Leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts) -- 跳转到定义
+    buf_keymap(bufnr, "n", "<leader>ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts) -- 代码动作
+    buf_keymap(bufnr, "n", "<Leader>fm", "<cmd>lua vim.lsp.buf.format()<CR>", opts) -- 格式化
+    buf_keymap(bufnr, "n", "<Leader>ep", "<cmd>lua vim.diagnostic.open_float()<CR>", opts) -- 显示错误
+    buf_keymap(bufnr, "n", "<Leader>ej", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts) -- 下一个错误
+    buf_keymap(bufnr, "n", "<Leader>ek", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts) -- 上一个错误
 end -- 语言服务器
+
+M.auto_complete = function(cmp)
+    local feedkey = function(key, mode)
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+    end
+
+    return {
+        ["<C-o>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}), -- 出现补全
+        ["<C-c>"] = cmp.mapping({
+            i = cmp.mapping.abort(),
+            c = cmp.mapping.close()
+        }), -- 关闭补全
+        ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), {"i", "c"}), -- 上一个
+        ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), {"i", "c"}), -- 下一个
+        ["<CR>"] = cmp.mapping.confirm({
+            select = true,
+            behavior = cmp.ConfirmBehavior.Replace
+        }), -- 确认选择
+        ["<C-l>"] = cmp.mapping(function(_)
+            if vim.fn["vsnip#available"](1) == 1 then
+                feedkey("<Plug>(vsnip-expand-or-jump)", "")
+            end
+        end, {"i", "s"}), -- 跳到上一个参数
+
+        ["<C-h>"] = cmp.mapping(function()
+            if vim.fn["vsnip#jumpable"](-1) == 1 then
+                feedkey("<Plug>(vsnip-jump-prev)", "")
+            end
+        end, {"i", "s"}) -- 跳到上一个参数
+    }
+end -- 自动补全
 
 return M
