@@ -40,7 +40,7 @@ local basic_options = {
     whichwrap = "<,>,[,]", -- 光标移动到行首或行尾时换行
     wildmenu = true, -- 命令行模式下使用菜单选择
     wrap = false, -- 不自动换行
-    writebackup = false, -- 不生成备份文件
+    writebackup = false -- 不生成备份文件
 }
 
 for k, v in pairs(basic_options) do

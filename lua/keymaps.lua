@@ -44,3 +44,28 @@ keymap("v", "<", "<gv", opts) -- 选中区域连续左移
 keymap("v", ">", ">gv", opts) -- 选中区域连续右移
 keymap("v", "J", ":move '>+1<CR>gv-gv", opts) -- 选中区域连续下移
 keymap("v", "K", ":move '<-2<CR>gv-gv", opts) -- 选中区域连续上移
+
+local M = {}
+
+M.syntax_parser = {
+    incremental_selection = {
+        init_selection = "<CR>", -- 初始化选择
+        node_incremental = "<CR>", -- 扩大节点
+        node_decremental = "<BS>", -- 缩小节点
+        scope_incremental = "<TAB>" -- 扩大范围
+    }, -- 增量选择模块
+    refactor = {
+        smart_rename = {
+            smart_rename = nil -- 智能重命名
+        }, -- 智能重命名
+        navigation = {
+            goto_definition = nil, -- 跳转到定义
+            list_definitions = nil, -- 列出定义
+            list_definitions_toc = nil, -- 列出定义目录
+            goto_next_usage = "<leader>gn", -- 跳转到下一个使用
+            goto_previous_usage = "<leader>gp" -- 跳转到上一个使用
+        } -- 重名导航
+    } -- 重构模块
+} -- 语法分析
+
+return M

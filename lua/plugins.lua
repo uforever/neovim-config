@@ -18,6 +18,12 @@ return require('packer').startup({
         use("folke/tokyonight.nvim") -- 颜色主题TokyoNight
         -- use("navarasu/onedark.nvim") -- 颜色主题OneDark
         -- use("shaunsingh/nord.nvim") -- 颜色主题Nord
+        use("nvim-treesitter/nvim-treesitter-refactor") -- 重构模块
+        use("p00f/nvim-ts-rainbow") -- 彩虹括号
+        use({
+            "nvim-treesitter/nvim-treesitter",
+            run = ":TSUpdate"
+        }) -- 语法高亮
 
         -- 自动安装packer并同步插件
         if packer_bootstrap then
