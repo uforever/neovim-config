@@ -13,6 +13,11 @@ if not lsp_config_status_ok then
 	return
 end
 
+local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not cmp_nvim_lsp_status_ok then
+	return
+end
+
 local servers = {
 	lua = "sumneko_lua" -- Lua
 	-- go = "gopls", -- Go
@@ -46,6 +51,10 @@ mason_lsp.setup({
 
 local language_server_keymaps = require("keymaps").language_server -- 语言服务快捷键
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+
 local general_opts = {
 	flags = {
 		debounce_text_changes = 150 -- 延迟文本变更
@@ -54,8 +63,8 @@ local general_opts = {
 		client.server_capabilities.documentFormattingProvider = true -- 启用格式化
 		client.server_capabilities.documentRangeFormattingProvider = false -- 不启用范围格式化
 		language_server_keymaps(bufnr) -- 映射快捷键
-	end
-	-- capabilities = nil, -- 客户端能力
+	end,
+	capabilities = capabilities,
 } -- 通用选项
 
 local servers_handlers = {}

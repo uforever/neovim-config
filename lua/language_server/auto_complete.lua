@@ -23,17 +23,22 @@ cmp.setup({
 	},
 	mapping = require("keymaps").auto_complete(cmp), -- 键位映射
 	formatting = {
-		format = function(entry, vim_item)
-			if vim.tbl_contains({ 'path' }, entry.source.name) then
-				local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
-				if icon then
-					vim_item.kind = icon
-					vim_item.kind_hl_group = hl_group
-					return vim_item
+		format = lspkind.cmp_format({
+			mode = 'symbol_text', -- 显示文本
+			maxwidth = 50, -- 最大宽度
+      		ellipsis_char = '...', -- 多出的部分用省略号
+			before = function(entry, vim_item)
+				vim_item.menu = "[" .. entry.source.name .. "]" -- 显示提示来源
+				if vim.tbl_contains({ 'path' }, entry.source.name) then -- path来源提示文件图标优化
+					local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
+					if icon then
+						vim_item.kind = icon
+						vim_item.kind_hl_group = hl_group
+					end
 				end
+				return vim_item
 			end
-			return lspkind.cmp_format({ with_text = true })(entry, vim_item)
-		end
+		})
 	} -- 候选列表样式美化 图标 + 文字
 })
 

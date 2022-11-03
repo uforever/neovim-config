@@ -36,6 +36,8 @@ return require('packer').startup({
         use("hrsh7th/cmp-nvim-lsp") -- LSP
         use("hrsh7th/cmp-path") -- 文件路径
         use("hrsh7th/cmp-cmdline") -- 命令行
+		use("j-hui/fidget.nvim") -- lsp加载进度
+		use("kkharji/lspsaga.nvim") -- lsp客户端UI
 
 		-- 自动安装packer并同步插件
 		if packer_bootstrap then
