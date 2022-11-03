@@ -26,7 +26,7 @@ cmp.setup({
 		format = lspkind.cmp_format({
 			mode = 'symbol_text', -- 显示文本
 			maxwidth = 50, -- 最大宽度
-      		ellipsis_char = '...', -- 多出的部分用省略号
+			ellipsis_char = '...', -- 多出的部分用省略号
 			before = function(entry, vim_item)
 				vim_item.menu = "[" .. entry.source.name .. "]" -- 显示提示来源
 				if vim.tbl_contains({ 'path' }, entry.source.name) then -- path来源提示文件图标优化

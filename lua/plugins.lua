@@ -28,20 +28,27 @@ return require('packer').startup({
 		use("neovim/nvim-lspconfig") -- LSP客户端配置
 		use("williamboman/mason.nvim") -- 语言服务管理
 		use("williamboman/mason-lspconfig.nvim") -- 语言服务自动安装
-        use("onsails/lspkind-nvim") -- LSP美化
-        use("hrsh7th/nvim-cmp") -- 自动补全
-        use("hrsh7th/vim-vsnip") -- 代码片段
-        use("hrsh7th/cmp-vsnip") -- 代码片段
-        use("hrsh7th/cmp-buffer") -- 缓冲区
-        use("hrsh7th/cmp-nvim-lsp") -- LSP
-        use("hrsh7th/cmp-path") -- 文件路径
-        use("hrsh7th/cmp-cmdline") -- 命令行
+		use("onsails/lspkind-nvim") -- LSP美化
+		use("hrsh7th/nvim-cmp") -- 自动补全
+		use("hrsh7th/vim-vsnip") -- 代码片段
+		use("hrsh7th/cmp-vsnip") -- 代码片段
+		use("hrsh7th/cmp-buffer") -- 缓冲区
+		use("hrsh7th/cmp-nvim-lsp") -- LSP
+		use("hrsh7th/cmp-path") -- 文件路径
+		use("hrsh7th/cmp-cmdline") -- 命令行
 		use("j-hui/fidget.nvim") -- lsp加载进度
 		use("kkharji/lspsaga.nvim") -- lsp客户端UI
 		use("lukas-reineke/indent-blankline.nvim") -- 缩进参考线
 		use("windwp/nvim-autopairs") -- 自动补全括号
 		use("numToStr/Comment.nvim") -- 注释
 		use("lewis6991/gitsigns.nvim") -- git集成
+		use("ahmedkhalf/project.nvim") -- 项目管理
+		use("nvim-tree/nvim-tree.lua") -- 文件树
+		use("famiu/bufdelete.nvim") -- 删除缓冲区
+		use("akinsho/bufferline.nvim") -- 标签栏/面包屑
+		use("nvim-lualine/lualine.nvim") -- 状态栏
+		use("nvim-telescope/telescope.nvim") -- 模糊搜索
+		use("glepnir/dashboard-nvim") -- 启动页
 
 		-- 自动安装packer并同步插件
 		if packer_bootstrap then

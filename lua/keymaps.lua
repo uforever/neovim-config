@@ -123,4 +123,44 @@ end -- 自动补全
 
 M.comment = '<C-/>' -- 注释
 
+keymap("n", "<F3>", ":NvimTreeToggle<CR>", opts) -- 打开/关闭文件树
+M.file_tree = { -- 文件树快捷键
+	{ key = { "<CR>", "<2-LeftMouse>" }, action = "edit" }, -- 打开
+	{ key = "l", action = "vsplit" }, -- 分窗口打开
+	{ key = "i", action = "toggle_ignored" }, -- 显示ignore文件
+	{ key = ".", action = "toggle_dotfiles" }, -- 显示隐藏文件
+	{ key = "<F5>", action = "refresh" }, -- 刷新
+	{ key = "o", action = "create" }, -- 新建
+	{ key = "d", action = "remove" }, -- 删除
+	{ key = "s", action = "rename" }, -- 重命名
+	{ key = "x", action = "cut" }, -- 剪切
+	{ key = "y", action = "copy" }, -- 复制
+	{ key = "p", action = "paste" }, -- 粘贴
+	{ key = "f", action = "system_open" } -- 系统打开
+}
+
+-- 面包屑/状态栏快捷键
+keymap("n", "<Leader>th", ":BufferLineCyclePrev<CR>", opts) -- 切换到上一个buffer
+keymap("n", "<Leader>tl", ":BufferLineCycleNext<CR>", opts) -- 切换到下一个buffer
+keymap("n", "<Leader>t<BS>", ":Bdelete!<CR>", opts) -- 关闭当前buffer
+keymap("n", "<Leader>t<CR>", ":BufferLineCloseRight<CR>:BufferLineCloseLeft<CR>", opts) -- 关闭其他buffer
+
+-- 模糊搜索快捷键
+keymap("n", "<C-p>", ":Telescope find_files<CR>", opts)
+keymap("n", "<C-f>", ":Telescope live_grep<CR>", opts)
+
+M.fuzzy_finder = { -- 模糊搜索快捷键
+	i = {
+		["<Down>"] = "move_selection_next", -- 下移
+		["<Up>"] = "move_selection_previous", -- 上移
+		["<C-h>"] = "cycle_history_next", -- 下一个搜索记录
+		["<C-l>"] = "cycle_history_prev", -- 上一个搜索记录
+		["<C-c>"] = "close", -- 关闭窗口
+		["<C-d>"] = "close", -- 关闭窗口
+		["<Esc>"] = "close", -- 关闭窗口
+		["<C-k>"] = "preview_scrolling_up", -- 预览窗口向上滚动
+		["<C-j>"] = "preview_scrolling_down" -- 预览窗口向下滚动
+	}
+}
+
 return M
