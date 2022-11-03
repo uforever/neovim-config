@@ -38,13 +38,13 @@ lspsaga.init_lsp_saga({
 	warn_sign = " ",
 	hint_sign = " ",
 	infor_sign = " ",
-	dianostic_header_icon = "   ",
+	diagnostic_header_icon = "   ",
 	code_action_icon = " ",
 	code_action_prompt = {
 		enable = true,
 		sign = true,
 		sign_priority = 20,
-		virtual_text = true,
+		virtual_text = false, -- 虚拟文本
 	},
 	finder_definition_icon = "  ",
 	finder_reference_icon = "  ",

@@ -53,6 +53,9 @@ keymap("n", "<Leader>dk", ":Gitsigns prev_hunk<CR>", opts) -- 上一个块
 keymap("n", "<Leader>dp", ":Gitsigns preview_hunk<CR>", opts) -- 预览块
 keymap("n", "<Leader>du", ":Gitsigns reset_hunk<CR>", opts) -- 重置块 撤销块
 keymap("n", "<Leader>dl", ":Gitsigns blame_line<CR>", opts) -- 预览行
+keymap("i", "<C-f>", [[ copilot#Accept("\<CR>") ]], { silent = true, script = true, expr = true }) -- 接受建议
+keymap("i", "<C-b>", "<Plug>(copilot-dismiss)", { noremap = false }) -- 取消建议
+keymap("n", ",.", ":Copilot panel<CR>", opts)
 
 local M = {}
 
@@ -153,8 +156,8 @@ M.fuzzy_finder = { -- 模糊搜索快捷键
 	i = {
 		["<Down>"] = "move_selection_next", -- 下移
 		["<Up>"] = "move_selection_previous", -- 上移
-		["<C-h>"] = "cycle_history_next", -- 下一个搜索记录
-		["<C-l>"] = "cycle_history_prev", -- 上一个搜索记录
+		["<C-l>"] = "cycle_history_next", -- 下一个搜索记录
+		["<C-h>"] = "cycle_history_prev", -- 上一个搜索记录
 		["<C-c>"] = "close", -- 关闭窗口
 		["<C-d>"] = "close", -- 关闭窗口
 		["<Esc>"] = "close", -- 关闭窗口
