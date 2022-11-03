@@ -38,6 +38,10 @@ return require('packer').startup({
         use("hrsh7th/cmp-cmdline") -- 命令行
 		use("j-hui/fidget.nvim") -- lsp加载进度
 		use("kkharji/lspsaga.nvim") -- lsp客户端UI
+		use("lukas-reineke/indent-blankline.nvim") -- 缩进参考线
+		use("windwp/nvim-autopairs") -- 自动补全括号
+		use("numToStr/Comment.nvim") -- 注释
+		use("lewis6991/gitsigns.nvim") -- git集成
 
 		-- 自动安装packer并同步插件
 		if packer_bootstrap then

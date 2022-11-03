@@ -19,10 +19,11 @@ if not cmp_nvim_lsp_status_ok then
 end
 
 local servers = {
-	lua = "sumneko_lua" -- Lua
+	lua = "sumneko_lua", -- Lua
 	-- go = "gopls", -- Go
-	-- python = "pyright", -- Python
+	python = "pyright", -- Python
 	-- ruby = "solargraph", -- Ruby
+	-- rust = "rust_analyzer", -- Rust
 } -- 语言服务
 
 local mason_settings = {
