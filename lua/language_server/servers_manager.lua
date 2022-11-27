@@ -21,7 +21,7 @@ end
 local servers = {
 	lua = "sumneko_lua", -- Lua
 	-- go = "gopls", -- Go
-	python = "pyright", -- Python
+	-- python = "pyright", -- Python
 	-- ruby = "solargraph", -- Ruby
 	-- rust = "rust_analyzer", -- Rust
 } -- 语言服务
