@@ -19,7 +19,6 @@ cmp.setup({
 		{ name = "buffer" }, -- 缓冲区
 		{ name = "nvim_lsp" }, -- LSP
 		{ name = "path" }, -- 文件路径
-		{ name = "cmdline" }, -- 命令行
 	},
 	mapping = require("keymaps").auto_complete(cmp), -- 键位映射
 	formatting = {
