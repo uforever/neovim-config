@@ -4,6 +4,8 @@
 
 my neovim configuration
 
+![image](screenshot.png)
+
 #### Installation
 
 ```

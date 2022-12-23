@@ -4,6 +4,8 @@
 
 我的Neovim配置文件
 
+![image](screenshot.png)
+
 #### 安装教程
 
 ```
