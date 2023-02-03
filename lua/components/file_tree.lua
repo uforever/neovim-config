@@ -39,7 +39,7 @@ nvim_tree.setup({
 	}, -- 显示 git 状态图标
 	hijack_cursor = false, -- 不禁用光标
 	hijack_netrw = true, -- 劫持netrw
-	open_on_setup = true, -- 启动时自动开启文件树
+	open_on_setup = false, -- 启动时不自动开启文件树
 	open_on_setup_file = false, -- 打开文件时不自动开启
 	renderer = {
 		highlight_git = false, -- 文件名高亮

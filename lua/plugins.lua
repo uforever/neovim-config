@@ -49,7 +49,7 @@ return require('packer').startup({
 		use("nvim-lualine/lualine.nvim") -- 状态栏
 		use("nvim-telescope/telescope.nvim") -- 模糊搜索
 		use("glepnir/dashboard-nvim") -- 启动页
-		-- use("github/copilot.vim") -- Copilot
+		use("github/copilot.vim") -- Copilot
 
 		-- 自动安装packer并同步插件
 		if packer_bootstrap then
