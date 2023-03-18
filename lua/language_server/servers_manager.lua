@@ -19,7 +19,7 @@ if not cmp_nvim_lsp_status_ok then
 end
 
 local servers = {
-	lua = "sumneko_lua", -- Lua
+	lua = "lua_ls", -- Lua
 	-- go = "gopls", -- Go
 	-- python = "pyright", -- Python
 	-- ruby = "solargraph", -- Ruby
