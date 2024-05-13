@@ -214,4 +214,23 @@ M.telescope = function(actions)
   }
 end
 
+M.fittencode = function()
+  local fitten = require "fittencode"
+  map("i", "<C-f>", function()
+    if fitten.has_suggestions() then
+      fitten.accept_all_suggestions()
+    end
+  end, { desc = "fittencode accept all", silent = true })
+  map("i", "<C-l>", function()
+    if fitten.has_suggestions() then
+      fitten.accept_line()
+    end
+  end, { desc = "fittencode accept line", silent = true })
+  map("i", "<C-j>", function()
+    if fitten.has_suggestions() then
+      fitten.accept_word()
+    end
+  end, { desc = "fittencode accept word", silent = true })
+end
+
 return M

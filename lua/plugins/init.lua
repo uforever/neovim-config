@@ -119,4 +119,16 @@ return {
     "folke/which-key.nvim",
     keys = { "<leader>", "<c-f>", "<c-r>", "<c-w>", '"', "'", "`", "c", "v", "g" },
   },
+  -- https://github.com/luozhiya/fittencode.nvim
+  {
+    "luozhiya/fittencode.nvim",
+    event = { "InsertEnter" },
+    cmd = { "Fitten" },
+    config = function()
+      require("fittencode").setup {
+        use_default_keymaps = false,
+      }
+      require("mappings").fittencode()
+    end,
+  },
 }
