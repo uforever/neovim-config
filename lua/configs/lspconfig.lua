@@ -21,7 +21,7 @@ local lspconfig = require "lspconfig"
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 -- https://github.com/helix-editor/helix/wiki/Language-Server-Configurations
 -- install first and then add here
-local servers = { "html", "cssls", "tsserver", "clangd" }
+local servers = { "html", "cssls", "jsonls", "tsserver", "clangd" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
