@@ -46,3 +46,11 @@ winget install BurntSushi.ripgrep.GNU
 
 都安装好后，打开neovim，输入`:checkhealth`，确保除了缺少用户配置文件和各种语言providers的警告，没有其它错误。
 
+克隆配置文件
+```powershell
+git clone https://github.com/NvChad/starter $ENV:USERPROFILE\AppData\Local\nvim
+```
+或
+```shell
+git clone https://github.com/NvChad/starter ~/.config/nvim
+```
