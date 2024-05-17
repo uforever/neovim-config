@@ -79,8 +79,12 @@ https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.m
 和
 https://github.com/helix-editor/helix/wiki/Language-Server-Configurations
 
-默认支持lua、html、css、javascript、json、typescript、python和rust，
+默认支持lua、c、html、css、javascript、json、typescript、python和rust，
 如果需要其它语言可以参考：先安装对应的LSP，然后配置`lua/configs/lspconfig.lua`和`lua/configs/conform.lua`
+
+- lua(`lua-ls stylua`)
+
+`:MasonInstallAll`
 
 - html(`html`)、css(`cssls`)、json(`jsonls`)
 
@@ -101,6 +105,10 @@ npm install -g pyright
 ```
 
 `:MasonInstall ruff-lsp`
+
+- c(`clangd`)
+地址：`https://github.com/llvm/llvm-project/releases`
+选择：`LLVM-x.x.x-win64.exe`
 
 - rust(`rust-analyzer`)
 
