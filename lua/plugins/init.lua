@@ -30,6 +30,15 @@ return {
       require "configs.lspconfig"
     end,
   },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function()
+      local conf = require "nvchad.configs.cmp"
+      conf.completion.completeopt = "menuone,preview,noinsert,noselect"
+      conf.mapping["<C-f>"] = nil
+      return conf
+    end,
+  },
   -- add cmp-cmdline
   {
     "hrsh7th/cmp-cmdline",
