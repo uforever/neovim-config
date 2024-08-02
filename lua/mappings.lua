@@ -51,13 +51,18 @@ map("i", "jk", "<Esc>", { desc = "general quit insert" })
 map("i", "<Esc>", "`", { desc = "general ` for 60% keyboard" })
 map("n", "qq", "<cmd>qa<CR>", { desc = "general quit all" })
 
+-- terminal
+map({ "n", "t" }, "<C-'>", function()
+  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+end, { desc = "terminal toggle floating term" })
+
 -- move
 map("i", "<C-a>", "<Home>", { desc = "move beginning of line" })
 map("i", "<C-e>", "<End>", { desc = "move end of line" })
 map("v", "<", "<gv", { desc = "move decrease indent" })
 map("v", ">", ">gv", { desc = "move increase indent" })
-map("v", "<M-j>", ":move '>+1<CR>gv-gv", { desc = "move swap down" })
-map("v", "<M-k>", ":move '<-2<CR>gv-gv", { desc = "move swap up" })
+map("v", "<C-j>", ":move '>+1<CR>gv-gv", { desc = "move swap down" })
+map("v", "<C-k>", ":move '<-2<CR>gv-gv", { desc = "move swap up" })
 
 -- <leader>w
 -- window
@@ -116,7 +121,10 @@ M.lsp = function(bufnr)
   map("n", "<leader>gt", vim.lsp.buf.type_definition, opts "go to type definition")
   map("n", "<leader>gl", vim.lsp.buf.declaration, opts "Go to declaration")
 
-  map("n", "<leader>g;", function()
+  -- map("n", "<leader>g;", function()
+  --   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+  -- end, opts "toggle inlay hints")
+  map("n", "<C-;>", function()
     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
   end, opts "toggle inlay hints")
   -- map("n", "<leader>ge", vim.lsp.buf.add_workspace_folder, opts "enter workspace folder")
@@ -146,10 +154,10 @@ end, { desc = "tabufline close others" })
 
 -- comment
 -- <leader>/  for Line
--- <M-/>      for Block
+-- <C-/>      for Block
 map(
   "v",
-  "<M-/>",
+  "<C-/>",
   "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
   { desc = "comment block" }
 )

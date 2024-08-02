@@ -12,4 +12,5 @@ opt.foldenable = false
 
 if vim.g.neovide then
   o.guifont = "FiraCode Nerd Font,JetBrainsMono Nerd Font,Cascadia Code:h11"
+  -- o.guifont = "FiraCode Nerd Font:h14"
 end
