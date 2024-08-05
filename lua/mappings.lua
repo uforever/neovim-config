@@ -154,13 +154,9 @@ end, { desc = "tabufline close others" })
 
 -- comment
 -- <leader>/  for Line
--- <C-/>      for Block
-map(
-  "v",
-  "<C-/>",
-  "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
-  { desc = "comment block" }
-)
+-- <C-/>      for Line
+-- map("n", "<C-/>", "gcc", { desc = "comment toggle line" })
+-- map("v", "<C-/>", "gc", { desc = "comment toggle line" })
 
 -- nvimtree
 map("n", "<F3>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })

@@ -67,10 +67,6 @@ return {
     end,
   },
   {
-    "numToStr/Comment.nvim",
-    opts = { mappings = { basic = false, extra = false } },
-  },
-  {
     "nvim-telescope/telescope.nvim",
     opts = function()
       local conf = require "nvchad.configs.telescope"
