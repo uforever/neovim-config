@@ -149,7 +149,7 @@ map("n", "<leader>t<BS>", function()
 end, { desc = "tabufline close current" })
 
 map("n", "<leader>t<CR>", function()
-  require("nvchad.tabufline").closeOtherBufs()
+  require("nvchad.tabufline").closeAllBufs()
 end, { desc = "tabufline close others" })
 
 -- comment
