@@ -60,11 +60,12 @@ M.ui = {
     },
   },
 
-  lsp = { signature = true },
   -- hl_override = {
   -- 	Comment = { italic = true },
   -- 	["@comment"] = { italic = true },
   -- },
 }
+
+M.lsp = { signature = true }
 
 return M

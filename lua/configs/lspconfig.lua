@@ -1,13 +1,13 @@
 -- load defaults
 local configs = require "nvchad.configs.lspconfig"
-local conf = require("chadrc").ui.lsp
+local signature = require("chadrc").lsp.signature
 -- change mappings
 local mappings = require("mappings").lsp
 
 -- custom on_attach function
 local on_attach = function(client, bufnr)
   mappings(bufnr)
-  if conf.signature and client.server_capabilities.signatureHelpProvider then
+  if signature and client.server_capabilities.signatureHelpProvider then
     require("nvchad.lsp.signature").setup(client, bufnr)
   end
 end
@@ -21,7 +21,7 @@ local lspconfig = require "lspconfig"
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 -- https://github.com/helix-editor/helix/wiki/Language-Server-Configurations
 -- install first and then add here
-local servers = { "html", "cssls", "jsonls", "tsserver", "clangd" }
+local servers = { "html", "cssls", "jsonls", "ts_ls", "clangd" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
